@@ -3,6 +3,11 @@
 This project is a lightweight text analytics and time-series forecasting tool. It helps users identify how often a selected word stem appears over time and then forecast future movement using an ARMA model.
 
 The project is useful when text data has a date attached to it, such as news articles, customer feedback, support tickets, survey responses, reports, or social media posts. For example, a user can track how often words related to “traffic,” “price,” “delay,” “climate,” or “sales” appear each day, then generate a simple short-term forecast.
+## Dashboard Preview
+
+The dashboard allows users to upload a CSV file, select a word stem, choose ARMA parameters, and view forecast results.
+
+![Dashboard Preview](assets/dashboard-preview.png)
 
 ## Project Purpose
 

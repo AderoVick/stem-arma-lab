@@ -1,132 +1,226 @@
-# Text Stemming + ARMA Forecasting Lab
+# TextPulse Forecast Lab
 
-This project is a lightweight text analytics and time-series forecasting tool. It helps users identify how often a selected word stem appears over time and then forecast future movement using an ARMA model.
+**TextPulse Forecast Lab** turns dated text into measurable topic trends and short-term forecasts. It combines lightweight natural-language processing with time-series modelling in a professional Streamlit dashboard.
 
-The project is useful when text data has a date attached to it, such as news articles, customer feedback, support tickets, survey responses, reports, or social media posts. For example, a user can track how often words related to “traffic,” “price,” “delay,” “climate,” or “sales” appear each day, then generate a simple short-term forecast.
-## Dashboard Preview
+[![Quality checks](https://github.com/AderoVick/stem-arma-lab/actions/workflows/python-package.yml/badge.svg)](https://github.com/AderoVick/stem-arma-lab/actions/workflows/python-package.yml)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-The dashboard allows users to upload a CSV file, select a word stem, choose ARMA parameters, and view forecast results.
+![TextPulse architecture](assets/architecture.svg)
 
-![Dashboard Preview](assets/dashboard-preview.png)
+## Why this project matters
 
-## Project Purpose
+Organizations often collect text with timestamps—support tickets, customer feedback, news headlines, survey comments, incident reports, and social posts—but struggle to measure how topics change over time. TextPulse converts those records into an evenly spaced count series, evaluates forecasting approaches, and presents the results with uncertainty ranges and downloadable outputs.
 
-Many real-world datasets contain text, but text is often difficult to analyze over time. This project converts raw text into a daily numerical time series by counting selected word stems. Once the text has been converted into a time series, an ARMA model can be used to study patterns and make short-term forecasts.
+## Version 2 highlights
 
-For example, words such as “traffic,” “traffics,” and “trafficking” may share the same root stem. By applying stemming, the project groups related word forms together and produces a cleaner count of how often the topic appears.
+- Uploads are processed **in memory** instead of being written to a shared file.
+- CSV columns are matched case-insensitively and validated with clear error messages.
+- Invalid dates, blank text, and exact duplicates are reported and removed.
+- Users can compare **multiple topics** on daily, weekly, or monthly timelines.
+- Topic matching supports Porter stemming or exact-word matching.
+- The dashboard suggests frequent searchable topics without downloading an NLTK corpus.
+- Forecasting supports manual ARIMA orders and automatic backtested model selection.
+- A naive baseline is included so statistical models must demonstrate real improvement.
+- Results include MAE, RMSE, sMAPE, confidence intervals, residual diagnostics, AIC, and BIC.
+- Aggregated data and forecasts can be downloaded as CSV files.
+- The project includes tests, CI checks, Docker support, and a Streamlit Cloud entry point.
 
-## What the Project Does
+## Dashboard sections
 
-The pipeline performs four main tasks:
+### Overview
 
-1. Cleans and tokenizes text from a CSV file.
-2. Applies Porter stemming to reduce words to their root form.
-3. Aggregates the selected stem frequency by date.
-4. Fits an ARMA(p, q) model and forecasts future daily counts.
+Review record counts, date coverage, total topic mentions, data-quality results, source preview, and a multi-topic trend chart.
 
-The project can be used through both a command-line interface and a simple Streamlit dashboard.
+### Explore
 
-## Example Use Cases
+Inspect frequent topic candidates, topic-level summary statistics, the aggregated time series, and downloadable processed data.
 
-This project can be applied in several areas:
+### Forecast
 
-* **News trend analysis:** Track how often a topic appears in articles over time.
-* **Customer feedback analysis:** Monitor complaints or repeated issues from customer text.
-* **Social media monitoring:** Follow changes in public discussion around a keyword.
-* **Academic research:** Study how important terms appear in dated text documents.
-* **Business intelligence:** Forecast short-term attention around products, services, or market topics.
+Select one tracked topic, choose automatic or manual modelling, set the forecast horizon and confidence level, then inspect the forecast and backtest metrics.
 
-## Input Format
+### Diagnostics
 
-The project expects a CSV file with two columns:
+Compare candidate models and examine residual behaviour, AIC, BIC, residual mean, and residual standard deviation.
+
+## Data format
+
+Provide a CSV file containing `date` and `text` columns:
 
 ```csv
 date,text
 2026-01-01,"Traffic delays increased after the road closure."
-2026-01-02,"The city reported reduced traffic near the highway."
+2026-01-02,"New traffic signals improved vehicle flow downtown."
 ```
 
-Required columns:
+Column names are case-insensitive. Dates that cannot be parsed and rows with blank text are removed and reported in the dashboard.
 
-* `date`: the date of the text entry
-* `text`: the raw text to analyze
+## Architecture
 
-## How the Workflow Works
+```text
+CSV / uploaded file
+        │
+        ▼
+Validation and cleaning
+        │
+        ▼
+Tokenization and topic normalization
+        │
+        ▼
+Daily / weekly / monthly count series
+        │
+        ▼
+Backtesting and model comparison
+        │
+        ▼
+Forecast, confidence interval, diagnostics, exports
+```
 
-The user selects a target stem, such as `traffic`. The system then searches each text record, counts how many times that stem appears, groups the counts by date, and creates a daily time series.
+## Project structure
 
-After the time series is created, the ARMA model estimates short-term movement based on past values and previous error patterns. The result is shown as a forecast chart in the dashboard.
+```text
+stem-arma-lab/
+├── streamlit_app.py          # Streamlit Cloud entry point
+├── ui/
+│   └── App.py                # Dashboard and visualizations
+├── src/
+│   ├── data_loader.py        # CSV validation and quality reporting
+│   ├── text_analysis.py      # NLP and topic time-series creation
+│   ├── forecasting.py        # Forecasting, metrics, and model comparison
+│   ├── main.py               # Command-line interface
+│   ├── preprocess.py         # Backward-compatible helpers
+│   └── arma_model.py         # Backward-compatible ARMA wrappers
+├── tests/                    # Automated unit tests
+├── data/sample_text.csv      # Demonstration dataset
+├── assets/architecture.svg
+├── .streamlit/config.toml
+├── Dockerfile
+├── requirements.txt
+└── requirements-dev.txt
+```
 
-## Dashboard Features
+## Local installation
 
-The Streamlit dashboard allows users to:
+### 1. Clone the repository
 
-* upload a CSV file,
-* select a target word stem,
-* choose ARMA parameters `p` and `q`,
-* select the number of forecast days,
-* view historical stem counts,
-* view forecasted future counts.
+```bash
+git clone https://github.com/AderoVick/stem-arma-lab.git
+cd stem-arma-lab
+```
 
-## Quickstart
-
-Create a virtual environment:
+### 2. Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment on Windows:
+Activate it on Windows:
 
-```bash
+```powershell
 .\.venv\Scripts\activate
 ```
 
-Install requirements:
+Activate it on macOS or Linux:
 
 ```bash
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Run the dashboard:
+### 4. Run the dashboard
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The previous command remains supported:
 
 ```bash
 streamlit run ui/App.py
 ```
 
-Run a CLI example:
+## Command-line usage
+
+Automatic model selection:
 
 ```bash
-python -m src.main --csv data/sample_text.csv --stem traffic --p 1 --q 1 --steps 7
+python -m src.main \
+  --csv data/sample_text.csv \
+  --topic traffic \
+  --steps 14 \
+  --output outputs/traffic_forecast.csv
 ```
 
-## Technologies Used
+Manual ARIMA model:
 
-* Python
-* pandas
-* NLTK Porter Stemmer
-* statsmodels
-* Streamlit
-* matplotlib
+```bash
+python -m src.main \
+  --csv data/sample_text.csv \
+  --topic climate \
+  --manual \
+  --p 1 --d 1 --q 1 \
+  --steps 14
+```
 
-## Limitations
+## Run tests
 
-This project is designed as a learning and experimentation tool. Forecast quality depends on the amount and consistency of the data. Very rare words, short datasets, missing dates, or unstable text patterns may produce weak forecasts.
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
+```
 
-The ARMA model is best suited for relatively stable time series. If the data has strong trends, seasonality, or major structural changes, future versions could add ARIMA, SARIMA, or automated model selection.
+Critical syntax and undefined-name lint check:
 
-## Future Improvements
+```bash
+python -m flake8 src ui tests streamlit_app.py \
+  --select=E9,F63,F7,F82 \
+  --show-source --statistics
+```
 
-Possible improvements include:
+## Deploy on Streamlit Community Cloud
 
-* adding model performance metrics such as MAE or RMSE,
-* showing confidence intervals on the dashboard,
-* allowing users to compare multiple stems,
-* adding automatic stem suggestions,
-* supporting lemmatization as an alternative to stemming,
-* adding downloadable forecast results,
-* improving visual design with summary cards and clearer charts.
+1. Push this repository to GitHub.
+2. Open Streamlit Community Cloud and create an app.
+3. Select the repository and the `main` branch.
+4. Set the app file to `streamlit_app.py`.
+5. Deploy.
 
-## Summary
+The application does not require API keys or downloadable NLP corpora.
 
-Text Stemming + ARMA Forecasting Lab connects natural language processing with time-series forecasting. It turns dated text into measurable trend data, making it easier to understand how topics rise, fall, and possibly move in the near future.
+## Run with Docker
+
+```bash
+docker build -t textpulse-forecast-lab .
+docker run --rm -p 8501:8501 textpulse-forecast-lab
+```
+
+Open `http://localhost:8501` in a browser.
+
+## Modelling notes
+
+The automatic workflow backtests a compact set of ARMA/ARIMA candidates and a naive baseline on the most recent observations. The successful model with the lowest RMSE is selected, using MAE and sMAPE as tie-breakers. Forecast values and confidence limits are clipped at zero because topic mentions are non-negative counts.
+
+This application is an analytical learning and decision-support tool. Forecast accuracy depends on data volume, temporal consistency, topic frequency, and structural changes in the underlying process. Confidence intervals describe model uncertainty; they do not guarantee future outcomes.
+
+## Possible future extensions
+
+- sentiment trends alongside topic frequency,
+- lemmatization with a packaged language model,
+- seasonal models and count-specific forecasting,
+- rolling-origin cross-validation,
+- user-defined stopword lists,
+- saved analysis sessions,
+- PDF or HTML report generation,
+- multilingual tokenization.
+
+## License
+
+Released under the [MIT License](LICENSE).

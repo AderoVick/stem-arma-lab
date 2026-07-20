@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#102647"/></linearGradient>
+    <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#6f8cff"/><stop offset="1" stop-color="#55d6be"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity=".12" stroke="#fff"><path d="M0 100H1200M0 200H1200M0 300H1200M0 400H1200M0 500H1200"/><path d="M100 0V630M250 0V630M400 0V630M550 0V630M700 0V630M850 0V630M1000 0V630"/></g>
+  <rect x="78" y="80" width="72" height="72" rx="20" fill="#6f8cff"/>
+  <g fill="#fff"><rect x="94" y="118" width="8" height="18" rx="3"/><rect x="107" y="107" width="8" height="29" rx="3"/><rect x="120" y="94" width="8" height="42" rx="3"/><rect x="133" y="111" width="8" height="25" rx="3"/></g>
+  <text x="178" y="118" fill="#fff" font-family="Arial, sans-serif" font-size="34" font-weight="700">TextPulse Forecast Lab</text>
+  <text x="80" y="250" fill="#fff" font-family="Arial, sans-serif" font-size="65" font-weight="700">Turn dated text into</text>
+  <text x="80" y="330" fill="url(#accent)" font-family="Arial, sans-serif" font-size="65" font-weight="700">trends and forecasts.</text>
+  <text x="82" y="393" fill="#aebbd0" font-family="Arial, sans-serif" font-size="25">NLP topic tracking · ARMA/ARIMA comparison · uncertainty · diagnostics</text>
+  <g transform="translate(730 130)">
+    <rect width="390" height="340" rx="28" fill="#f6f8fc"/>
+    <rect x="28" y="28" width="334" height="55" rx="14" fill="#fff" stroke="#dfe6f0"/>
+    <rect x="28" y="104" width="99" height="72" rx="13" fill="#fff" stroke="#dfe6f0"/>
+    <rect x="144" y="104" width="99" height="72" rx="13" fill="#fff" stroke="#dfe6f0"/>
+    <rect x="260" y="104" width="102" height="72" rx="13" fill="#fff" stroke="#dfe6f0"/>
+    <rect x="28" y="196" width="334" height="116" rx="13" fill="#fff" stroke="#dfe6f0"/>
+    <path d="M50 283 C89 258,109 265,145 238 S211 250,248 219 S311 229,344 202" fill="none" stroke="#6f8cff" stroke-width="6" stroke-linecap="round"/>
+    <path d="M50 292 C95 280,121 287,159 266 S222 280,265 250 S319 263,344 239" fill="none" stroke="#55cbb0" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="80" y="548" fill="#7f91ac" font-family="Arial, sans-serif" font-size="20">aderovick.github.io/stem-arma-lab</text>
+</svg>

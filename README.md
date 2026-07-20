@@ -7,6 +7,10 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+[**Project website**](https://aderovick.github.io/stem-arma-lab/) · [**Live dashboard**](https://stem-arma-lab.streamlit.app/) · [**Deployment guide**](DEPLOYMENT.md)
+
+The repository contains two connected experiences: a responsive GitHub Pages landing page in `index.html`, and the interactive Streamlit dashboard launched from `streamlit_app.py`.
+
 ![TextPulse architecture](assets/architecture.svg)
 
 ## Why this project matters
@@ -82,6 +86,9 @@ Forecast, confidence interval, diagnostics, exports
 
 ```text
 stem-arma-lab/
+├── index.html                # GitHub Pages project landing page
+├── assets/site.css           # Landing-page design system
+├── assets/site.js            # Navigation and reveal interactions
 ├── streamlit_app.py          # Streamlit Cloud entry point
 ├── ui/
 │   └── App.py                # Dashboard and visualizations

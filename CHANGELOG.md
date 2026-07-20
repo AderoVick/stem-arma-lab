@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 — 2026-07-20
+
+- Added a dedicated responsive GitHub Pages landing page.
+- Added project SEO metadata, structured data, social preview, favicon, sitemap, and robots file.
+- Added a configurable live-dashboard URL and a complete deployment guide.
+- Added accessible mobile navigation and lightweight scroll-reveal interactions.
+
 ## 2.0.0 — 2026-07-20
 
 - Rebuilt the Streamlit dashboard with Overview, Explore, Forecast, and Diagnostics sections.

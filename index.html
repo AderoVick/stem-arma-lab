@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TextPulse Forecast Lab | NLP Topic Forecasting</title>
+  <meta name="description" content="TextPulse Forecast Lab converts timestamped text into topic trends, model comparisons, forecasts, uncertainty intervals, diagnostics, and downloadable insights.">
+  <meta name="author" content="Victor Odhiambo">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TextPulse Forecast Lab">
+  <meta property="og:description" content="An interactive NLP and time-series forecasting platform for measuring and forecasting topic activity in dated text.">
+  <meta property="og:url" content="https://aderovick.github.io/stem-arma-lab/">
+  <meta property="og:image" content="https://aderovick.github.io/stem-arma-lab/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://aderovick.github.io/stem-arma-lab/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "TextPulse Forecast Lab",
+    "applicationCategory": "DataAnalysisApplication",
+    "operatingSystem": "Web",
+    "description": "A Streamlit application that turns timestamped text into topic trends and short-term forecasts using NLP and time-series models.",
+    "url": "https://aderovick.github.io/stem-arma-lab/",
+    "codeRepository": "https://github.com/AderoVick/stem-arma-lab",
+    "author": {
+      "@type": "Person",
+      "name": "Victor Odhiambo",
+      "url": "https://aderovick.github.io/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="TextPulse home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </span>
+        <span>
+          <strong>TextPulse</strong>
+          <small>Forecast Lab</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#use-cases">Use cases</a>
+        <a class="nav-github" href="https://github.com/AderoVick/stem-arma-lab" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button button-small" data-live-link href="https://stem-arma-lab.streamlit.app/" target="_blank" rel="noreferrer">Launch app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-pad">
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span></span> NLP · Time series · Decision support</div>
+          <h1>Turn dated text into <em>measurable trends</em> and defensible forecasts.</h1>
+          <p class="hero-lead">TextPulse transforms support tickets, feedback, news headlines, survey comments, and incident reports into topic timelines, model comparisons, uncertainty ranges, and downloadable insights.</p>
+
+          <div class="hero-actions">
+            <a class="button" data-live-link href="https://stem-arma-lab.streamlit.app/" target="_blank" rel="noreferrer">
+              Launch live dashboard
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-ghost" href="https://github.com/AderoVick/stem-arma-lab" target="_blank" rel="noreferrer">
+              View source code
+            </a>
+          </div>
+
+          <div class="hero-meta" aria-label="Project highlights">
+            <div><strong>4</strong><span>analysis sections</span></div>
+            <div><strong>3</strong><span>time frequencies</span></div>
+            <div><strong>95%</strong><span>confidence intervals</span></div>
+          </div>
+        </div>
+
+        <div class="dashboard-shell reveal" aria-label="Dashboard preview">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-address">textpulse-forecast-lab</div>
+            <div class="browser-status">Live analysis</div>
+          </div>
+          <div class="dashboard-body">
+            <aside class="mock-sidebar">
+              <div class="mock-logo"></div>
+              <div class="mock-control wide"></div>
+              <div class="mock-control"></div>
+              <div class="mock-control"></div>
+              <div class="mock-control tall"></div>
+            </aside>
+            <div class="mock-main">
+              <div class="mock-heading">
+                <div><span>TEXT ANALYTICS</span><strong>Topic activity overview</strong></div>
+                <div class="mock-badge">Demo data</div>
+              </div>
+              <div class="metric-row">
+                <div><span>Valid records</span><strong>2,190</strong><small>cleaned rows</small></div>
+                <div><span>Topics tracked</span><strong>3</strong><small>traffic · climate · energy</small></div>
+                <div><span>Total mentions</span><strong>1,642</strong><small>across all periods</small></div>
+              </div>
+              <div class="chart-card">
+                <div class="chart-title"><strong>Topic activity over time</strong><span>Daily</span></div>
+                <svg viewBox="0 0 680 240" role="img" aria-label="Illustrative multi-topic line chart">
+                  <defs>
+                    <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#6f8cff" stop-opacity=".30"/>
+                      <stop offset="1" stop-color="#6f8cff" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <g class="grid-lines">
+                    <line x1="40" y1="30" x2="650" y2="30"/><line x1="40" y1="80" x2="650" y2="80"/>
+                    <line x1="40" y1="130" x2="650" y2="130"/><line x1="40" y1="180" x2="650" y2="180"/>
+                    <line x1="40" y1="220" x2="650" y2="220"/>
+                  </g>
+                  <path class="chart-area" d="M40 181 C84 166,102 170,145 148 S218 118,261 129 S337 93,380 104 S451 63,493 83 S571 40,650 51 L650 220 L40 220 Z"/>
+                  <path class="line line-one" d="M40 181 C84 166,102 170,145 148 S218 118,261 129 S337 93,380 104 S451 63,493 83 S571 40,650 51"/>
+                  <path class="line line-two" d="M40 151 C85 144,111 158,151 140 S219 159,270 133 S339 146,390 120 S467 137,517 106 S588 123,650 92"/>
+                  <path class="line line-three" d="M40 197 C99 188,129 195,177 174 S260 184,307 165 S390 171,438 146 S528 161,575 135 S625 140,650 127"/>
+                </svg>
+                <div class="chart-legend"><span class="legend-one">Traffic</span><span class="legend-two">Climate</span><span class="legend-three">Energy</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Technology stack">
+      <div class="container proof-list">
+        <span>Python</span><span>Pandas</span><span>NLTK</span><span>Statsmodels</span><span>Plotly</span><span>Streamlit</span><span>Pytest</span><span>Docker</span>
+      </div>
+    </section>
+
+    <section class="section-pad" id="features">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div class="eyebrow"><span></span> Built for trustworthy analysis</div>
+          <h2>From raw text to a complete forecasting workflow.</h2>
+          <p>The project combines data validation, lightweight NLP, model evaluation, interactive visualisation, and exportable outputs in one reproducible application.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="icon-wrap">01</div>
+            <h3>Reliable data preparation</h3>
+            <p>Uploads are processed in memory. Date, text, duplicate, and blank-row checks are reported clearly before analysis begins.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon-wrap">02</div>
+            <h3>Flexible topic tracking</h3>
+            <p>Compare several topics using exact matching or Porter stemming on daily, weekly, or monthly timelines.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon-wrap">03</div>
+            <h3>Model comparison</h3>
+            <p>Automatic backtesting compares compact ARMA/ARIMA candidates against a naive baseline before choosing a forecast.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon-wrap">04</div>
+            <h3>Clear uncertainty</h3>
+            <p>Forecasts include confidence intervals, holdout metrics, residual diagnostics, AIC, BIC, and plain-language interpretation.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon-wrap">05</div>
+            <h3>Interactive exploration</h3>
+            <p>Plotly charts, topic suggestions, data previews, and filtering controls make the workflow understandable to non-specialists.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="icon-wrap">06</div>
+            <h3>Reproducible delivery</h3>
+            <p>Tests, CI checks, Docker support, a Streamlit entry point, and CSV exports support reliable reuse and deployment.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="workflow">
+      <div class="container split-layout">
+        <div class="section-heading reveal">
+          <div class="eyebrow"><span></span> Analysis workflow</div>
+          <h2>Five connected steps, one usable output.</h2>
+          <p>Every stage is designed to expose assumptions and data quality instead of hiding them behind a single forecast number.</p>
+          <a class="text-link" href="https://github.com/AderoVick/stem-arma-lab#data-format" target="_blank" rel="noreferrer">View the required CSV format <span>→</span></a>
+        </div>
+
+        <ol class="timeline reveal">
+          <li><span>1</span><div><strong>Load and validate</strong><p>Read a CSV with date and text columns, then report invalid dates, blank text, and duplicates.</p></div></li>
+          <li><span>2</span><div><strong>Normalize topics</strong><p>Tokenize text and apply exact matching or stemming to make topic counts consistent.</p></div></li>
+          <li><span>3</span><div><strong>Build time series</strong><p>Aggregate topic mentions into evenly spaced daily, weekly, or monthly observations.</p></div></li>
+          <li><span>4</span><div><strong>Backtest models</strong><p>Evaluate statistical candidates and a naive benchmark using recent held-out observations.</p></div></li>
+          <li><span>5</span><div><strong>Forecast and export</strong><p>Review uncertainty, diagnostics, interpretation, and downloadable CSV results.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section-pad" id="architecture">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div class="eyebrow"><span></span> Modular architecture</div>
+          <h2>Structured for learning, testing, and extension.</h2>
+          <p>The dashboard is separated from validation, text analysis, forecasting, command-line use, and tests so each component can evolve independently.</p>
+        </div>
+        <div class="architecture-frame reveal">
+          <img src="assets/architecture.svg" alt="TextPulse data flow from CSV input through NLP and time-series forecasting to insights">
+        </div>
+        <div class="architecture-notes reveal">
+          <div><strong>Input</strong><span>Timestamped text records</span></div>
+          <div><strong>Processing</strong><span>Validation and topic normalization</span></div>
+          <div><strong>Modelling</strong><span>Backtesting and uncertainty</span></div>
+          <div><strong>Output</strong><span>Charts, metrics, and CSV files</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-dark" id="use-cases">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow eyebrow-light"><span></span> Practical applications</div>
+          <h2>Use the same pipeline across different text sources.</h2>
+          <p>TextPulse is designed as a general analytical pattern rather than a single-purpose demo.</p>
+        </div>
+        <div class="use-case-grid">
+          <article class="use-case-card reveal"><span>Customer experience</span><h3>Support tickets and reviews</h3><p>Track recurring complaints, service disruptions, product issues, and emerging customer concerns.</p></article>
+          <article class="use-case-card reveal"><span>Public information</span><h3>News and incident monitoring</h3><p>Measure attention to events, places, policies, risks, or infrastructure topics over time.</p></article>
+          <article class="use-case-card reveal"><span>Research</span><h3>Survey and qualitative responses</h3><p>Turn dated open-text responses into comparable topic timelines for exploratory analysis.</p></article>
+          <article class="use-case-card reveal"><span>Operations</span><h3>Internal reports and logs</h3><p>Monitor issue categories and identify whether recent activity is stable, rising, or declining.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container cta-panel reveal">
+        <div>
+          <div class="eyebrow"><span></span> Explore the full project</div>
+          <h2>Upload a dataset. Track a topic. Compare models.</h2>
+          <p>Use the interactive dashboard or review the open-source implementation, tests, and documentation on GitHub.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" data-live-link href="https://stem-arma-lab.streamlit.app/" target="_blank" rel="noreferrer">Open dashboard <span>↗</span></a>
+          <a class="button button-ghost-dark" href="https://github.com/AderoVick/stem-arma-lab" target="_blank" rel="noreferrer">Explore repository</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+          <span><strong>TextPulse</strong><small>Forecast Lab</small></span>
+        </a>
+        <p>Open-source NLP and time-series forecasting project by Victor Odhiambo.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://aderovick.github.io/">Portfolio</a>
+        <a href="https://github.com/AderoVick/stem-arma-lab">Repository</a>
+        <a href="README.md">Documentation</a>
+        <a href="LICENSE">MIT License</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> TextPulse Forecast Lab</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="assets/site-config.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
